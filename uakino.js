@@ -18,19 +18,21 @@
 
         fetchMovies: function() {
             var url = 'https://uakino.best'; // Головна сторінка сайту
-            
-            fetch({
-                url: url,
-                method: 'GET',
-                dataType: 'text',
-                success: function(response) {
+            fetch("https://example.com/data.json")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    return response.text(); // or response.text(), response.blob(), etc.
+                  })
+                .then(data => {
                     var movies = uakinoPlugin.parseMovies(response);
                     uakinoPlugin.showMovies(movies);
-                },
-                error: function() {
+                })
+                .catch(error => {
                     Lampa.Noty.show('Не вдалося завантажити дані з UA Kino');
-                }
-            });
+
+                });
         },
 
         parseMovies: function(html) {
