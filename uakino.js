@@ -18,7 +18,7 @@
 
         fetchMovies: function() {
             var url = 'https://uakino.best'; // Головна сторінка сайту
-            fetch("https://example.com/data.json")
+            fetch(url)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error("Network response was not ok");
