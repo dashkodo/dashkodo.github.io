@@ -19,7 +19,7 @@
         fetchMovies: function() {
             var url = 'https://uakino.best'; // Головна сторінка сайту
             
-            Lampa.Utils.request({
+            fetch({
                 url: url,
                 method: 'GET',
                 dataType: 'text',
